@@ -1,2 +1,2 @@
-# notifier
+# remindme
 Chrome extention for easy remainders
