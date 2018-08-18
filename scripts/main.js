@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#time_1").timeDropper();
+    $(".time_picker").timeDropper();
 
     $(".date_picker").dateDropper();
 });

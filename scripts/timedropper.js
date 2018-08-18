@@ -13,17 +13,16 @@
                 _td_alert,
                 _td_event = null,
                 _td_options = $.extend({
-
                     format: 'h:mm a',
                     autoswitch: false,
-                    meridians: false,
+                    meridians: true,
                     mousewheel: false,
                     setCurrentTime: true,
                     init_animation: "fadein",
-                    primaryColor: "#1977CC",
-                    borderColor: "#1977CC",
-                    backgroundColor: "#FFF",
-                    textColor: '#555'
+                    primaryColor: "#ffd025",
+                    borderColor: "#ffd025",
+                    backgroundColor: "#212121",
+                    textColor: '#FFF'
 
                 }, options);
 
@@ -63,7 +62,7 @@
 
             $('body').append('<div class="td-wrap td-n2" id="td-clock-' + _td_id + '"><div class="td-overlay"></div><div class="td-clock td-init"><div class="td-deg td-n"><div class="td-select"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 35.4" enable-background="new 0 0 100 35.4" xml:space="preserve"><g><path fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M98.1,33C85.4,21.5,68.5,14.5,50,14.5S14.6,21.5,1.9,33"/><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.9" y1="33" x2="1.9" y2="28.6"/><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.9" y1="33" x2="6.3" y2="33"/><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98.1" y1="33" x2="93.7" y2="33"/><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98.1" y1="33" x2="98.1" y2="28.6"/></g></svg></div></div><div class="td-medirian"><span class="td-icon-am td-n">AM</span><span class="td-icon-pm td-n">PM</span></div><div class="td-lancette"><div></div><div></div></div><div class="td-time"><span class="on"></span>:<span></span></div></div></div>');
 
-            $('head').append('<style>#td-clock-' + _td_id + ' .td-clock {color:' + _td_options.textColor + ';background: ' + _td_options.backgroundColor + '; box-shadow: 0 0 0 1px ' + _td_options.borderColor + ',0 0 0 8px rgba(0, 0, 0, 0.05); } #td-clock-' + _td_id + ' .td-clock .td-time span.on { color:' + _td_options.primaryColor + '} #td-clock-' + _td_id + ' .td-clock:before { border-color: ' + _td_options.borderColor + '} #td-clock-' + _td_id + ' .td-select:after { box-shadow: 0 0 0 1px ' + _td_options.borderColor + ' } #td-clock-' + _td_id + ' .td-clock:before,#td-clock-' + _td_id + ' .td-select:after {background: ' + _td_options.backgroundColor + ';} #td-clock-' + _td_id + ' .td-lancette {border: 2px solid ' + _td_options.primaryColor + '; opacity:0.1}#td-clock-' + _td_id + ' .td-lancette div:after { background: ' + _td_options.primaryColor + ';} #td-clock-' + _td_id + ' .td-bulletpoint div:after { background:' + _td_options.primaryColor + '; opacity:0.1}</style>');
+            $('head').append('<style>#td-clock-' + _td_id + ' .td-clock {color:' + _td_options.textColor + ';background: ' + _td_options.backgroundColor + '; box-shadow: 0 0 0 1px ' + _td_options.borderColor + ',0 0 0 8px rgba(255, 208, 37, 0.05); } #td-clock-' + _td_id + ' .td-clock .td-time span.on { color:' + _td_options.primaryColor + '} #td-clock-' + _td_id + ' .td-clock:before { border-color: ' + _td_options.borderColor + '} #td-clock-' + _td_id + ' .td-select:after { box-shadow: 0 0 0 1px ' + _td_options.borderColor + ' } #td-clock-' + _td_id + ' .td-clock:before,#td-clock-' + _td_id + ' .td-select:after {background: ' + _td_options.backgroundColor + ';} #td-clock-' + _td_id + ' .td-lancette {border: 2px solid ' + _td_options.primaryColor + '; opacity:0.1}#td-clock-' + _td_id + ' .td-lancette div:after { background: ' + _td_options.primaryColor + ';} #td-clock-' + _td_id + ' .td-bulletpoint div:after { background:' + _td_options.primaryColor + '; opacity:1}</style>');
 
 
 
@@ -211,7 +210,6 @@
                 clearInterval(_td_alert);
 
                 _td_c.find('.td-deg').removeClass('td-n');
-                _td_c.find('.td-select').removeClass('td-rubber');
 
                 _td_input_on = true;
 
@@ -223,7 +221,6 @@
 
                 var a, b, deg, tmp, rad2deg = 180 / Math.PI;
 
-                _td_c.removeClass('td-rubber');
 
                 $(window).on('touchmove mousemove', function (e) {
 
@@ -297,7 +294,6 @@
                     }
 
                     _td_c.find('.td-deg').addClass('td-n');
-                    _td_c.find('.td-select').addClass('td-rubber');
 
                 }
 
@@ -378,9 +374,10 @@
 
                 _td_container.removeClass('td-fadeout');
                 _td_container.addClass('td-show').addClass('td-' + _td_options.init_animation);
+
                 _td_c.css({
-                    'top': (_td_input.offset().top + (_td_input.outerHeight() - 8)),
-                    'left': (_td_input.offset().left + (_td_input.outerWidth() / 2)) - (_td_c.outerWidth() / 2)
+                    'top': (($(window).height() - $(_td_c[0]).outerHeight()) / 2),
+                    'left': (($(window).width() - $(_td_c[0]).outerWidth()) / 2)
                 });
 
                 if (_td_c.hasClass('td-init')) {
@@ -391,7 +388,6 @@
                             _td_c.find('.td-select').removeClass('td-alert');
                         }, 1000);
                     }, 2000);
-
                     _td_c.removeClass('td-init');
 
                 }
@@ -409,8 +405,8 @@
 
                 _td_define_deg();
                 _td_c.css({
-                    'top': (_td_input.offset().top + (_td_input.outerHeight() - 8)),
-                    'left': (_td_input.offset().left + (_td_input.outerWidth() / 2)) - (_td_c.outerWidth() / 2)
+                    'top': (($(window).height() - $(_td_c[0]).outerHeight()) / 2),
+                    'left': (($(window).width() - $(_td_c[0]).outerWidth()) / 2)
                 });
             });
 
