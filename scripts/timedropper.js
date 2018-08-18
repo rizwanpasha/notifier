@@ -1,12 +1,12 @@
-(function($) {
-    $.fn.timeDropper = function(options, callbackFnk) {
-        return $(this).each(function() {
+(function ($) {
+    $.fn.timeDropper = function (options, callbackFnk) {
+        return $(this).each(function () {
 
             var
                 _td_input = $(this),
                 _td_input_on = false,
                 _td_mobile = false,
-                _td_num = function(n) {
+                _td_num = function (n) {
                     return n < 10 ? '0' + n : n
                 },
                 _td_id = $('.td-clock').length,
@@ -27,7 +27,7 @@
 
                 }, options);
 
-            var _td_color = function(col, amt) {
+            var _td_color = function (col, amt) {
 
                 var usePound = false;
 
@@ -82,7 +82,7 @@
                 _td_wheel_deg = 0,
                 _td_h,
                 _td_m,
-                _td_define_deg = function() {
+                _td_define_deg = function () {
 
                     var
                         o = _td_c.find('.td-time span.on'),
@@ -96,7 +96,7 @@
                     _td_wheel_deg = deg;
 
                 },
-                _td_rotation = function(deg) {
+                _td_rotation = function (deg) {
 
                     var t = _td_c.find('.td-time span.on');
 
@@ -183,7 +183,7 @@
                 _td_mobile = true;
             }
 
-            _td_c.find('.td-time span').on('click', function(e) {
+            _td_c.find('.td-time span').on('click', function (e) {
 
                 var o = $(this);
 
@@ -202,7 +202,7 @@
 
             });
 
-            _td_c.find('.td-deg').on('touchstart mousedown', function(e) {
+            _td_c.find('.td-deg').on('touchstart mousedown', function (e) {
 
                 _td_define_deg();
 
@@ -225,7 +225,7 @@
 
                 _td_c.removeClass('td-rubber');
 
-                $(window).on('touchmove mousemove', function(e) {
+                $(window).on('touchmove mousemove', function (e) {
 
                     if (_td_input_on == true) {
 
@@ -257,7 +257,7 @@
 
             if (_td_options.mousewheel) {
 
-                _td_c.on('mousewheel', function(e) {
+                _td_c.on('mousewheel', function (e) {
 
                     e.preventDefault();
 
@@ -285,7 +285,7 @@
 
             }
 
-            $(document).on('touchend mouseup', function() {
+            $(document).on('touchend mouseup', function () {
 
                 if (_td_input_on) {
 
@@ -303,7 +303,7 @@
 
             });
 
-            var _td_init = function(value) {
+            var _td_init = function (value) {
 
                 var
                     d = new Date(),
@@ -367,12 +367,12 @@
 
             _td_init();
 
-            _td_input.focus(function(e) {
+            _td_input.focus(function (e) {
                 e.preventDefault();
                 _td_input.blur();
             });
 
-            _td_input.click(function(e) {
+            _td_input.click(function (e) {
 
                 clearInterval(_td_event);
 
@@ -385,9 +385,9 @@
 
                 if (_td_c.hasClass('td-init')) {
 
-                    _td_alert = setInterval(function() {
+                    _td_alert = setInterval(function () {
                         _td_c.find('.td-select').addClass('td-alert');
-                        setTimeout(function() {
+                        setTimeout(function () {
                             _td_c.find('.td-select').removeClass('td-alert');
                         }, 1000);
                     }, 2000);
@@ -397,15 +397,15 @@
                 }
 
             });
-            _td_overlay.click(function() {
+            _td_overlay.click(function () {
 
                 _td_container.addClass('td-fadeout').removeClass('td-' + _td_options.init_animation);
-                _td_event = setTimeout(function() {
+                _td_event = setTimeout(function () {
                     _td_container.removeClass('td-show')
                 }, 300);
 
             });
-            $(window).on('resize', function() {
+            $(window).on('resize', function () {
 
                 _td_define_deg();
                 _td_c.css({
