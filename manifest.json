@@ -11,9 +11,19 @@
     "matches": [
       "<all_urls>"
     ],
-    "js": ["/scripts/jquery-3.3.1.min.js",
-      "/scripts/Datedropper3/datedropper.js",
-      "/scripts/timedropper/timedropper.js"
+    "js": [
+      "./scripts/jquery-3.3.1.min.js",
+      "./scripts/datedropper.js",
+      "./scripts/timedropper.js"
     ]
-  }]
+  }],
+  "background": {
+    "scripts": [
+      "./scripts/notifications.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "notifications"
+  ]
 }

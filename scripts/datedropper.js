@@ -634,8 +634,6 @@
 
 		//LARGE-MODE DAY CLICK
 		.on(ui_event.i, picker_node_el + ' .pick-lg li.pick-v', function () {
-			get_picker_els('.pick-lg-b li').removeClass('pick-sl');
-			$(this).addClass('pick-sl');
 			pickers[picker.id].key['d'].current = $(this).attr('data-value');
 			picker_ul_transition('d', $(this).attr('data-value'));
 			picker_ctrl = true;
