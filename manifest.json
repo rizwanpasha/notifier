@@ -14,16 +14,23 @@
     "js": [
       "./scripts/jquery-3.3.1.min.js",
       "./scripts/datedropper.js",
-      "./scripts/timedropper.js"
+      "./scripts/timedropper.js",
+      "./scripts/notifications.js",
+      "./scripts/main.js"
     ]
   }],
   "background": {
     "scripts": [
-      "./scripts/notifications.js"
+      "./scripts/jquery-3.3.1.min.js",
+      "./scripts/datedropper.js",
+      "./scripts/timedropper.js",
+      "./scripts/notifications.js",
+      "./scripts/main.js"
     ],
     "persistent": false
   },
   "permissions": [
-    "notifications"
+    "notifications",
+    "storage"
   ]
 }

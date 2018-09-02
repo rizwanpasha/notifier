@@ -308,7 +308,7 @@
                     h,
                     m;
 
-                if (_td_input.val().length && !_td_options.setCurrentTime) {
+                if (!_td_input.data('default-time') && _td_input.val().length && !_td_options.setCurrentTime) {
 
                     var reg = /\d+/g,
                         am;
@@ -337,9 +337,13 @@
                         else m = _td_num(_td_span_m.text());
 
                     }
+                } else if (_td_input.data('default-time')) {
+                    var tempDate = _td_input.data('default-time');
+
+                    h = (Number(tempDate.substring(0, 2)) > 12) ? (Number(tempDate.substring(0, 2)) + 12) : Number(tempDate.substring(0, 2));
+                    m = tempDate.substring(3, 5);
 
                 } else {
-
                     if (!parseInt(_td_span_h.text())) h = _td_num(d.getHours());
                     else h = _td_num(_td_span_h.text());
                     if (!parseInt(_td_span_m.text())) m = _td_num(d.getMinutes());

@@ -134,7 +134,7 @@
 		is_date = function (value) {
 			var
 				format = /(^\d{1,4}[\.|\\/|-]\d{1,2}[\.|\\/|-]\d{1,4})(\s*(?:0?[1-9]:[0-5]|1(?=[012])\d:[0-5])\d\s*[ap]m)?$/;
-			return format.test(value);
+				return format.test(value);
 		},
 
 		// REST FUNCTIONS
